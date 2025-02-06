@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Time</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Question {{ current_question_index + 1 }} for {{ username }}</h2>
+    <h3>{{ question.question }}</h3>
+
+    <form action="/answer" method="post">
+        <input type="hidden" name="username" value="{{ username }}">
+        <input type="hidden" name="question_index" value="{{ current_question_index }}">
+        {% for option in question.options %}
+            <input type="radio" name="answer" value="{{ option }}"> {{ option }}<br>
+        {% endfor %}
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Panel</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="moderator-panel">
+        <h1>Moderator Panel</h1>
+        <h2>Question {{ current_question_index + 1 }}</h2>
+        <p><strong>Question:</strong> {{ question.question }}</p>
+
+        {% if not show_correct_answer %}
+        <form method="post">
+            <button type="submit" name="reveal_answer" class="reveal-button">Reveal Answer</button>
+        </form>
+        {% endif %}
+
+        {% if show_correct_answer %}
+            <div class="answer-section">
+                <p><strong>Correct Answer:</strong> {{ question.correctAnswer }}</p>
+                {% if correct_image %}
+                    <img src="{{ correct_image }}" alt="Correct Answer Image" class="answer-image">
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <form method="post" action="/next_question">
+            <button type="submit" class="next-question-button">Next Question</button>
+        </form>
+    </div>
+</body>
+</html>
+

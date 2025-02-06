@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Christmas traditions around the world</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Quiz!</h1>
+    <form action="/join" method="post">
+        <input type="text" name="username" placeholder="Enter your name" required>
+        <button type="submit">Join Quiz</button>
+    </form>
+</body>
+</html>
